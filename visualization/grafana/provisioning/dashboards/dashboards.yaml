@@ -1,0 +1,16 @@
+# Tells Grafana to load every dashboard JSON file in grafana/dashboards/.
+# FSAE_GRAFANA_DASHBOARDS_DIR is set to that folder's absolute path by
+# scripts/run_grafana.sh (Grafana needs an absolute path here).
+apiVersion: 1
+
+providers:
+  - name: fsae-dashboards
+    orgId: 1
+    folder: FSAE
+    type: file
+    disableDeletion: false
+    # Lets you edit in the UI; to keep a change, export the JSON back into grafana/dashboards/.
+    allowUiUpdates: true
+    updateIntervalSeconds: 30
+    options:
+      path: ${FSAE_GRAFANA_DASHBOARDS_DIR}

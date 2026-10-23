@@ -1,0 +1,24 @@
+# Grafana reads this at startup and creates/updates the InfluxDB data source.
+# ${VAR} values are filled from the environment of the Grafana process
+# (scripts/run_grafana.sh loads them from the repo's .env), so no secrets live here.
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB (data-logging)
+    # Fixed uid so dashboard JSON in grafana/dashboards/ can reference it on any machine.
+    uid: influxdb-data-logging
+    type: influxdb
+    access: proxy
+    url: ${INFLUXDB_V2_URL}
+    isDefault: true
+    editable: false
+    jsonData:
+      version: InfluxQL
+      # InfluxQL "database" = the v1 DBRP mapping created by scripts/setup_influx.sh,
+      # which uses the bucket name as the database name.
+      dbName: ${INFLUXDB_BUCKET}
+      httpMode: GET
+      # InfluxDB 2.x auth for InfluxQL: send the API token as a header.
+      httpHeaderName1: Authorization
+    secureJsonData:
+      httpHeaderValue1: Token ${INFLUXDB_V2_TOKEN}
