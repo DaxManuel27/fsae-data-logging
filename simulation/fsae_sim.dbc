@@ -1,0 +1,54 @@
+VERSION ""
+
+NS_ :
+
+BS_:
+
+BU_: SIM
+
+BO_ 256 Throttle: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ APPS1 : 32|16@1+ (0.1,0) [0|100] "%" Vector__XXX
+ SG_ APPS2 : 48|16@1+ (0.1,0) [0|100] "%" Vector__XXX
+
+BO_ 257 Brake: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ BrakeFront : 32|16@1+ (0.1,0) [0|200] "bar" Vector__XXX
+ SG_ BrakeRear : 48|16@1+ (0.1,0) [0|200] "bar" Vector__XXX
+
+BO_ 272 Steering: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ SteerAngle : 32|16@1- (0.1,0) [-180|180] "deg" Vector__XXX
+ SG_ SteerRate : 48|16@1- (0.1,0) [-3000|3000] "deg/s" Vector__XXX
+
+BO_ 512 Motor: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ MotorRPM : 32|16@1+ (1,0) [0|20000] "rpm" Vector__XXX
+ SG_ MotorTorque : 48|16@1- (0.1,0) [-200|200] "Nm" Vector__XXX
+
+BO_ 528 MotorTemps: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ MotorTemp : 32|16@1- (0.1,0) [-40|200] "degC" Vector__XXX
+ SG_ InverterTemp : 48|16@1- (0.1,0) [-40|200] "degC" Vector__XXX
+
+BO_ 768 Pack: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ PackVoltage : 32|16@1+ (0.1,0) [0|600] "V" Vector__XXX
+ SG_ PackCurrent : 48|16@1- (0.1,0) [-500|500] "A" Vector__XXX
+
+BO_ 784 CellTemps: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ CellTempMax : 32|16@1- (0.1,0) [-40|100] "degC" Vector__XXX
+ SG_ CellTempMin : 48|16@1- (0.1,0) [-40|100] "degC" Vector__XXX
+
+BO_ 1024 WheelSpeeds: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ WheelFL : 32|8@1+ (0.5,0) [0|127.5] "km/h" Vector__XXX
+ SG_ WheelFR : 40|8@1+ (0.5,0) [0|127.5] "km/h" Vector__XXX
+ SG_ WheelRL : 48|8@1+ (0.5,0) [0|127.5] "km/h" Vector__XXX
+ SG_ WheelRR : 56|8@1+ (0.5,0) [0|127.5] "km/h" Vector__XXX
+
+BO_ 1280 IMU: 8 SIM
+ SG_ Seq : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ AccelX : 32|16@1- (0.001,0) [-5|5] "g" Vector__XXX
+ SG_ AccelY : 48|16@1- (0.001,0) [-5|5] "g" Vector__XXX
