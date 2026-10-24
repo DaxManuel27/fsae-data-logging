@@ -1,0 +1,1156 @@
+{
+  "uid": "fsae_sim-signals",
+  "title": "fsae_sim signals",
+  "tags": [
+    "fsae",
+    "generated"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "refresh": "",
+  "graphTooltip": 1,
+  "templating": {
+    "list": [
+      {
+        "name": "session",
+        "label": "Session",
+        "type": "query",
+        "datasource": {
+          "type": "influxdb",
+          "uid": "influxdb-data-logging"
+        },
+        "query": "SHOW TAG VALUES WITH KEY = \"session\"",
+        "definition": "SHOW TAG VALUES WITH KEY = \"session\"",
+        "refresh": 1,
+        "sort": 2,
+        "multi": true,
+        "includeAll": false,
+        "current": {},
+        "options": []
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "Throttle (0x100)",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "APPS1 (%)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 1,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: %",
+          "min": 0,
+          "max": 100,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"APPS1\") AS \"APPS1\" FROM \"Throttle\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "APPS2 (%)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 1,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: %",
+          "min": 0,
+          "max": 100,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"APPS2\") AS \"APPS2\" FROM \"Throttle\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "Brake (0x101)",
+      "gridPos": {
+        "x": 0,
+        "y": 9,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "BrakeFront (bar)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 10,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: bar",
+          "min": 0,
+          "max": 200,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"BrakeFront\") AS \"BrakeFront\" FROM \"Brake\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "BrakeRear (bar)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 10,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: bar",
+          "min": 0,
+          "max": 200,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"BrakeRear\") AS \"BrakeRear\" FROM \"Brake\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "Steering (0x110)",
+      "gridPos": {
+        "x": 0,
+        "y": 18,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "SteerAngle (deg)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 19,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: deg",
+          "min": -180,
+          "max": 180,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"SteerAngle\") AS \"SteerAngle\" FROM \"Steering\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "timeseries",
+      "title": "SteerRate (deg/s)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 19,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: deg/s",
+          "min": -3000,
+          "max": 3000,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"SteerRate\") AS \"SteerRate\" FROM \"Steering\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "Motor (0x200)",
+      "gridPos": {
+        "x": 0,
+        "y": 27,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 11,
+      "type": "timeseries",
+      "title": "MotorRPM (rpm)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 28,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: rpm",
+          "min": 0,
+          "max": 20000,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"MotorRPM\") AS \"MotorRPM\" FROM \"Motor\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "timeseries",
+      "title": "MotorTorque (Nm)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 28,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: Nm",
+          "min": -200,
+          "max": 200,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"MotorTorque\") AS \"MotorTorque\" FROM \"Motor\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "MotorTemps (0x210)",
+      "gridPos": {
+        "x": 0,
+        "y": 36,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 14,
+      "type": "timeseries",
+      "title": "MotorTemp (degC)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 37,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: degC",
+          "min": -40,
+          "max": 200,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"MotorTemp\") AS \"MotorTemp\" FROM \"MotorTemps\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "timeseries",
+      "title": "InverterTemp (degC)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 37,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: degC",
+          "min": -40,
+          "max": 200,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"InverterTemp\") AS \"InverterTemp\" FROM \"MotorTemps\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "Pack (0x300)",
+      "gridPos": {
+        "x": 0,
+        "y": 45,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 17,
+      "type": "timeseries",
+      "title": "PackVoltage (V)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 46,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: V",
+          "min": 0,
+          "max": 600,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"PackVoltage\") AS \"PackVoltage\" FROM \"Pack\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "timeseries",
+      "title": "PackCurrent (A)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 46,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: A",
+          "min": -500,
+          "max": 500,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"PackCurrent\") AS \"PackCurrent\" FROM \"Pack\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "CellTemps (0x310)",
+      "gridPos": {
+        "x": 0,
+        "y": 54,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 20,
+      "type": "timeseries",
+      "title": "CellTempMax (degC)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 55,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: degC",
+          "min": -40,
+          "max": 100,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"CellTempMax\") AS \"CellTempMax\" FROM \"CellTemps\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "timeseries",
+      "title": "CellTempMin (degC)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 55,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: degC",
+          "min": -40,
+          "max": 100,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"CellTempMin\") AS \"CellTempMin\" FROM \"CellTemps\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "WheelSpeeds (0x400)",
+      "gridPos": {
+        "x": 0,
+        "y": 63,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 23,
+      "type": "timeseries",
+      "title": "WheelFL (km/h)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 64,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: km/h",
+          "min": 0,
+          "max": 127.5,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"WheelFL\") AS \"WheelFL\" FROM \"WheelSpeeds\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "timeseries",
+      "title": "WheelFR (km/h)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 64,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: km/h",
+          "min": 0,
+          "max": 127.5,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"WheelFR\") AS \"WheelFR\" FROM \"WheelSpeeds\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "timeseries",
+      "title": "WheelRL (km/h)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 72,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: km/h",
+          "min": 0,
+          "max": 127.5,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"WheelRL\") AS \"WheelRL\" FROM \"WheelSpeeds\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "timeseries",
+      "title": "WheelRR (km/h)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 72,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: km/h",
+          "min": 0,
+          "max": 127.5,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"WheelRR\") AS \"WheelRR\" FROM \"WheelSpeeds\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "row",
+      "collapsed": false,
+      "panels": [],
+      "title": "IMU (0x500)",
+      "gridPos": {
+        "x": 0,
+        "y": 80,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 28,
+      "type": "timeseries",
+      "title": "AccelX (g)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 81,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: g",
+          "min": -5,
+          "max": 5,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"AccelX\") AS \"AccelX\" FROM \"IMU\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "timeseries",
+      "title": "AccelY (g)",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-data-logging"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 81,
+        "w": 12,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "suffix: g",
+          "min": -5,
+          "max": 5,
+          "custom": {
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-data-logging"
+          },
+          "rawQuery": true,
+          "query": "SELECT mean(\"AccelY\") AS \"AccelY\" FROM \"IMU\" WHERE \"session\" =~ /^$session$/ AND $timeFilter GROUP BY time($__interval), \"session\" fill(none)",
+          "resultFormat": "time_series",
+          "alias": "$tag_session"
+        }
+      ]
+    }
+  ]
+}
